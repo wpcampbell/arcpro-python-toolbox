@@ -26,10 +26,19 @@ class Tool(object):
         param0 = arcpy.Parameter(
             displayName="Input Feature or Raster Data",
             name="in_features",
-            datatype="GPFeatureLayer",
+            datatype="GPFeatureLayert",
             parameterType="Required",
-            direction="Input")
-        return param0
+            direction="Input"
+            )
+        param1 = arcpy.Parameter(
+            displayName="Raw Name String",
+            name="raw_name_string",
+            datatype="String",
+            parameterType="Required",
+            direction="Input"
+        )
+        return param0,param1
+        
 
     def isLicensed(self):
         """Set whether tool is licensed to execute."""
