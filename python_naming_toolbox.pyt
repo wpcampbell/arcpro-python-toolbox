@@ -17,16 +17,16 @@ class Toolbox(object):
 class Tool(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
-        self.label = "Tool"
-        self.description = ""
+        self.label = "Geoprocessing Name Helper"
+        self.description = "Assists in naming an output file for a geoprocessing tool."
         self.canRunInBackground = False
 
     def getParameterInfo(self):
         """Define parameter definitions"""
         param0 = arcpy.Parameter(
-            displayName="Input Feature or Raster Data",
+            displayName="Input Feature",
             name="in_features",
-            datatype="GPFeatureLayert",
+            datatype="GPFeatureLayer",
             parameterType="Required",
             direction="Input"
         )
@@ -37,7 +37,8 @@ class Tool(object):
             parameterType="Required",
             direction="Input"
         )
-        return param0, param1
+        params = [param0, param1]
+        return params
 
     def isLicensed(self):
         """Set whether tool is licensed to execute."""
