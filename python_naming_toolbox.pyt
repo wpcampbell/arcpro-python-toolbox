@@ -26,7 +26,7 @@ class Tool(object):
         param0 = arcpy.Parameter(
             displayName="Input Feature or Raster Data",
             name="in_features",
-            datatype="GPFeatureLayer,DERasterDataset",
+            datatype="GPFeatureLayer",
             parameterType="Required",
             direction="Input")
         return param0
