@@ -8,7 +8,7 @@ class Toolbox(object):
         """Define the toolbox (the name of the toolbox is the name of the
         .pyt file)."""
         self.label = "Geoprocessing Naming Helper"
-        self.alias = "toolbox"
+        self.alias = "Geoprocessing Naming Helper"
 
         # List of tool classes associated with this toolbox
         self.tools = [Tool]
@@ -23,8 +23,13 @@ class Tool(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        params = None
-        return params
+        param0 = arcpy.Parameter(
+            displayName="Input Feature or Raster Data",
+            name="in_features",
+            datatype="GPFeatureLayer,DERasterDataset",
+            parameterType="Required",
+            direction="Input")
+        return param0
 
     def isLicensed(self):
         """Set whether tool is licensed to execute."""
