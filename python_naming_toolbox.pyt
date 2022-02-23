@@ -55,6 +55,10 @@ class Tool(object):
         """Modify the values and properties of parameters before internal
         validation is performed.  This method is called whenever a parameter
         has been changed."""
+        if parameters[1].valueAsText:
+            # call another method here to do the file name processing/shortening
+            parameters[2].filter.list = self.get_filename_options(parameters[1].value)
+            parameters[2].enabled = True
         return
 
     def updateMessages(self, parameters):
