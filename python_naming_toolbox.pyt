@@ -57,9 +57,16 @@ class Tool(object):
         has been changed."""
         if parameters[1].valueAsText:
             # call another method here to do the file name processing/shortening
+            class Name(object):
+                def get_filename_options(self):
+                    list = [] #create a list for file name suggestions
+                    
+
+
+
             parameters[2].filter.list = self.get_filename_options(parameters[1].value)
             parameters[2].enabled = True
-        return
+            return
 
     def updateMessages(self, parameters):
         """Modify the messages created by internal validation for each tool
