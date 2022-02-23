@@ -37,7 +37,14 @@ class Tool(object):
             parameterType="Required",
             direction="Input"
         )
-        params = [param0, param1]
+        param2 = arcpy.Parameter(
+            displayName="Name Suggestions",
+            name="name_sugg_dropdown",
+            datatype="GPValueTable",
+            parameterType="Required",
+            direction="Input"
+        )
+        params = [param0,param1,param2]
         return params
 
     def isLicensed(self):
