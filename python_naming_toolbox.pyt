@@ -40,7 +40,7 @@ class Tool(object):
         param2 = arcpy.Parameter(
             displayName="Name Suggestions",
             name="name_sugg_dropdown",
-            datatype="GPValueTable",
+            datatype="String",
             parameterType="Required",
             direction="Input"
         )
