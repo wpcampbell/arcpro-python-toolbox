@@ -44,7 +44,7 @@ class Tool(object):
             parameterType="Required",
             direction="Input"
         )
-        params = [param0,param1,param2]
+        params = [param0, param1, param2]
         return params
 
     def isLicensed(self):
@@ -55,7 +55,12 @@ class Tool(object):
         """Modify the values and properties of parameters before internal
         validation is performed.  This method is called whenever a parameter
         has been changed."""
-        return
+        # LOGIC TO BE ADDED:
+        # if parameters[1].valueAsText:
+    # call another method here to do the file name processing/shortening
+    # parameters[2].filter.list = self.get_filename_options(parameters[1].value)
+    # parameters[2].enabled = True
+    #     return
 
     def updateMessages(self, parameters):
         """Modify the messages created by internal validation for each tool
