@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from pydoc import describe
 import arcpy
 
 
@@ -36,6 +37,7 @@ class Tool(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
+        
         param0 = arcpy.Parameter(
             displayName="Input Feature",
             name="in_features",
