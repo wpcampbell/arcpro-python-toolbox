@@ -21,6 +21,19 @@ class Tool(object):
         self.description = "Assists in naming an output file for a geoprocessing tool."
         self.canRunInBackground = False
 
+    def get_filename_options(self, shapefileName):
+        # 1. covert spaces to underscores
+        updateFileName = shapefileName.replace(" ", "_")
+        # 2. return if less than acceptable length
+        acceptFileNames = []
+        if len(updateFileName) < 15:
+            acceptFileNames.append(updateFileName)
+        # 3. change underscores to camelCase
+        fileNameList = updateFileName.split("_")
+        fileNameList = [name[0].upper() + name[1:] for name in fileNameList]
+        acceptFileNames.append("".join(fileNameList))
+        return acceptFileNames
+
     def getParameterInfo(self):
         """Define parameter definitions"""
         param0 = arcpy.Parameter(
@@ -40,9 +53,12 @@ class Tool(object):
         param2 = arcpy.Parameter(
             displayName="Name Suggestions",
             name="name_sugg_dropdown",
-            datatype="String",
+            datatype="GPString",
             parameterType="Required",
-            direction="Input"
+            direction="Input",
+            enabled=False,
+            multiValue=True
+
         )
         params = [param0, param1, param2]
         return params
@@ -56,11 +72,13 @@ class Tool(object):
         validation is performed.  This method is called whenever a parameter
         has been changed."""
         # LOGIC TO BE ADDED:
-        # if parameters[1].valueAsText:
-    # call another method here to do the file name processing/shortening
-    # parameters[2].filter.list = self.get_filename_options(parameters[1].value)
-    # parameters[2].enabled = True
-    #     return
+        if parameters[1].valueAsText:
+            parameters[2].enabled = True
+            # call another method here to do the file name processing/shortening
+            parameters[2].filter.list = self.get_filename_options(
+                parameters[1].valueAsText)
+
+        return
 
     def updateMessages(self, parameters):
         """Modify the messages created by internal validation for each tool
@@ -69,4 +87,6 @@ class Tool(object):
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
+        arcpy.AddMessage("paramter1 {}".format(parameters[1].valueAsText))
+        arcpy.AddMessage(dir(parameters[1]))
         return
