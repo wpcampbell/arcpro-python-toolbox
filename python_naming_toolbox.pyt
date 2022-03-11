@@ -73,7 +73,7 @@ class Tool(object):
         """Modify the values and properties of parameters before internal
         validation is performed.  This method is called whenever a parameter
         has been changed."""
-        # LOGIC TO BE ADDED:
+        
         if parameters[1].valueAsText:
             parameters[2].enabled = True
             # call another method here to do the file name processing/shortening
