@@ -37,7 +37,7 @@ class Tool(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        
+
         param0 = arcpy.Parameter(
             displayName="Input Feature",
             name="in_features",
@@ -73,7 +73,7 @@ class Tool(object):
         """Modify the values and properties of parameters before internal
         validation is performed.  This method is called whenever a parameter
         has been changed."""
-        
+
         if parameters[1].valueAsText:
             parameters[2].enabled = True
             # call another method here to do the file name processing/shortening
