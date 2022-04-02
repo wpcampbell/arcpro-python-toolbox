@@ -27,7 +27,7 @@ class Tool(object):
         updateFileName = shapefileName.replace(" ", "_")
         # 2. return if less than acceptable length
         acceptFileNames = []
-        if len(updateFileName) <= 15:
+        if len(updateFileName) <= 20:
             acceptFileNames.append(updateFileName)
         # 3. change underscores to camelCase
             fileNameList = updateFileName.split("_")
@@ -39,12 +39,7 @@ class Tool(object):
             for vowel in vowels:
                 no_vowel_filename = no_vowel_filename.replace(vowel, '')  # you must reset the variable each time to keep the changes
             acceptFileNames.append(no_vowel_filename)
-        if len(updateFileName) > 15:
-            vowels = ['a', 'e', 'i', 'o', 'u',]  # only removing lower case.  This keeps any first letters that are capitalized, for readability
-            no_vowel_filename = updateFileName # create new filename variable to maintain the original if needed
-            for vowel in vowels:
-                no_vowel_filename = no_vowel_filename.replace(vowel, '')  # you must reset the variable each time to keep the changes
-            acceptFileNames.append(no_vowel_filename)
+
         return acceptFileNames
 
     def getParameterInfo(self):
